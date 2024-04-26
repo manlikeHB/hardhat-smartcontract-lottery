@@ -1,10 +1,11 @@
 require("@nomiclabs/hardhat-solhint");
-require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
+require("@nomiclabs/hardhat-ethers");
 require("hardhat-deploy");
 require("hardhat-gas-reporter");
 require("hardhat-contract-sizer");
 require("solidity-coverage");
+require("@nomicfoundation/hardhat-chai-matchers");
 require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
@@ -36,5 +37,18 @@ module.exports = {
     player: {
       default: 1,
     },
+  },
+  gasReporter: {
+    enabled: false,
+    outputFile: "gas-report.txt",
+    noColors: true,
+    currency: "USD",
+    // coinmarketcap: COINMARKETCAP_API_KEY,
+  },
+  mocha: {
+    timeout: 200000, // 200 seconds
+  },
+  etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
   },
 };
